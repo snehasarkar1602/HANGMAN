@@ -150,7 +150,7 @@ while True:
 
     first_screen()
     
-    #check collision
+    #check collision to check if user wants to play
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
