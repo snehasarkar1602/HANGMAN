@@ -27,7 +27,6 @@ WORD_FONT = pygame.font.SysFont('comicsans',60)
 TITLE_FONT = pygame.font.SysFont('broadway',60)
 FIRSTSCREEN_FONT = pygame.font.SysFont('comicsans',50)
 LASTSCREEN_FONT = pygame.font.SysFont('algerian',60)
-PLAYAGAIN_FONT = pygame.font.SysFont('comicsans',60)
 
 #load images
 images = []
