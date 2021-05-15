@@ -27,6 +27,8 @@ WORD_FONT = pygame.font.SysFont('comicsans',60)
 TITLE_FONT = pygame.font.SysFont('broadway',60)
 FIRSTSCREEN_FONT = pygame.font.SysFont('comicsans',50)
 LASTSCREEN_FONT = pygame.font.SysFont('algerian',60)
+PLAYAGAIN_FONT = pygame.font.SysFont('comicsans',60)
+CORRECTWORD_FONT = pygame.font.SysFont('algerian',40)
 
 #load images
 images = []
@@ -37,17 +39,17 @@ for i in range(7):
 
 #game variable
 hangman_status = 0
-words = ["INDIA", "JHARKHAND", "ODISHA", "DELHI", "GOA", "ASSAM", "HARYANA", "PUNJAB", "KANYAKUMARI", "KERALA", "KARNATAKA", "TELANGANA"]
+words = ["ASSAM", "BIHAR", "CHATTISGARH", "GOA", "GUJARAT", "HARAYANA", "JHARKHAND", "KARNATAKA", "KERALA", "MAHARASHTRA", "MANIPUR", "MEGHALAYA", "MIZORAM", "NAGALAND", "ODISHA", "PUNJAB", "RAJASTHAN", "SIKKIM", "TELANGANA", "TRIPURA", "UTTARAKHAND"]
 word = random.choice(words)
 guessed = []
 
 #colours
 WHITE = (255,255,255)
-SKYBLUE = (100,205,195)
+PINK = (240,128,128)
 BLACK = (0,0,0)
 
 def draw():
-    win.fill(SKYBLUE)
+    win.fill(PINK)
 
     #draw title
     text = TITLE_FONT.render("HANGMAN", 1, BLACK)
@@ -80,14 +82,24 @@ def draw():
 
 def display_message(message):
     pygame.time.delay(2000)
-    win.fill(SKYBLUE)
+    win.fill(PINK)
     text = LASTSCREEN_FONT.render(message, 1, BLACK)
-    win.blit(text, (250,213))
+    win.blit(text, (240,213))
     pygame.display.update()
     pygame.time.delay(3000)
 
+
+def correct_word(message):
+    pygame.time.delay(2000)
+    win.fill(PINK)
+    text = CORRECTWORD_FONT.render(message, 1, BLACK)
+    win.blit(text, (0,213))
+    pygame.display.update()
+    pygame.time.delay(6000)
+
+
 def first_screen():
-    win.fill(SKYBLUE)
+    win.fill(PINK)
 
     #draw message and ask user if they want to play
     text = FIRSTSCREEN_FONT.render("PRESS ANYWHERE ON THE SCREEN TO PLAY!", 1, BLACK)
@@ -136,6 +148,7 @@ def main():
         
         if hangman_status == 6:
             display_message("YOU LOST...!!!")
+            correct_word(" THE CORRECT WORD IS " + str(word))
             break
 
 #main menu rendering
@@ -149,7 +162,7 @@ while True:
 
     first_screen()
     
-    #check collision to check if user wants to play
+    #check collision
     for event in pygame.event.get():
         if event.type == pygame.MOUSEBUTTONDOWN:
             pos = pygame.mouse.get_pos()
