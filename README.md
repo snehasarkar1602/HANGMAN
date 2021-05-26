@@ -1,1 +1,2 @@
-# HANGMAN
+I have designed a GUI based simple Hangman Game using Python and Pygame. The game generates random words, and the users try to guess these random words letter by letter, and for every wrong letter guessed the game adds a body part to the hanging man. The user gets 6 chances in total.
+This game uses Python modules like pygame, math, os and random. For designing the GUI Window, I used core python, along with features of pygame such as blit. For generating the random State names in the game, I used Python's random module, which generates a random word each time it is called, from a given set of words. The game runs in a loop until the value of the run variable is True.
